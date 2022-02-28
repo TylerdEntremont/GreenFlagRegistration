@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+
+    <ImageButton
+        android:id="@+id/backArrow"
+        android:contentDescription="@string/backarrowdescript"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/emailText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:src="@drawable/backarrow"
+        android:layout_marginStart="10pt"
+        android:backgroundTint="@color/black"
+        />
+
+    <TextView
+        android:text="@string/create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/emailText"
+        app:layout_constraintLeft_toRightOf="@+id/backArrow"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        />
+
+
+    <TextView
+    android:id="@+id/emailText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/email"
+    app:layout_constraintBottom_toTopOf="@+id/emailEnter"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/backArrow"
+    app:layout_constraintHorizontal_bias="0"
+        android:fontFamily="@font/museosans_300"
+        android:layout_marginHorizontal="10pt"
+        />
+
+
+
+
+    <EditText
+        android:id="@+id/emailEnter"
+        android:autofillHints="emailAddress"
+        android:hint="@string/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/emailError"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailText"
+        android:layout_marginHorizontal="10pt"
+        android:singleLine="true"
+        android:inputType="textEmailAddress"
+        />
+
+    <ImageView
+        android:id="@+id/emailClear"
+        android:contentDescription="@string/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/emailEnter"
+        app:layout_constraintLeft_toLeftOf="@+id/emailEnter"
+        app:layout_constraintRight_toRightOf="@+id/emailEnter"
+        app:layout_constraintTop_toTopOf="@+id/emailEnter"
+        app:layout_constraintHorizontal_bias="1"
+        android:visibility="invisible"
+        android:src="@drawable/tick"
+        />
+
+    <ImageView
+        android:id="@+id/emailWrong"
+        android:contentDescription="@string/cross"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/emailEnter"
+        app:layout_constraintLeft_toLeftOf="@+id/emailEnter"
+        app:layout_constraintRight_toRightOf="@+id/emailEnter"
+        app:layout_constraintTop_toTopOf="@+id/emailEnter"
+        app:layout_constraintHorizontal_bias="1"
+        android:visibility="invisible"
+        android:src="@drawable/cross"
+        />
+
+    <TextView
+        android:id="@+id/emailError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/emailError"
+        app:layout_constraintBottom_toTopOf="@+id/PW"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailEnter"
+        android:visibility="invisible"
+        android:fontFamily="@font/museosans_300"
+        android:layout_marginHorizontal="10pt"
+        app:drawableStartCompat="@drawable/cross"
+        />
+
+
+
+    <TextView
+        android:id="@+id/PW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/PW"
+        app:layout_constraintBottom_toTopOf="@+id/PWEnter"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailError"
+        app:layout_constraintHorizontal_bias="0"
+        android:fontFamily="@font/museosans_300"
+        android:layout_marginHorizontal="10pt"/>
+
+
+
+    <EditText
+        android:autofillHints="password"
+        android:hint="@string/PW"
+        android:id="@+id/PWEnter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/firstPassError"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PW"
+        android:fontFamily="@font/museosans_300"
+        android:layout_marginHorizontal="10pt"
+        android:singleLine="true"
+        />
+
+    <ImageView
+        android:id="@+id/PWClear"
+        android:contentDescription="@string/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/PWEnter"
+        app:layout_constraintLeft_toLeftOf="@+id/PWEnter"
+        app:layout_constraintRight_toRightOf="@+id/PWEnter"
+        app:layout_constraintTop_toTopOf="@+id/PWEnter"
+        app:layout_constraintHorizontal_bias="1"
+        android:visibility="invisible"
+        android:src="@drawable/tick"
+        />
+
+    <ImageView
+        android:id="@+id/PWWrong"
+        android:contentDescription="@string/cross"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/PWEnter"
+        app:layout_constraintLeft_toLeftOf="@+id/PWEnter"
+        app:layout_constraintRight_toRightOf="@+id/PWEnter"
+        app:layout_constraintTop_toTopOf="@+id/PWEnter"
+        app:layout_constraintHorizontal_bias="1"
+        android:visibility="invisible"
+        android:src="@drawable/cross"
+        />
+
+    <TextView
+        android:id="@+id/firstPassError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/firstPassError"
+        app:layout_constraintBottom_toTopOf="@+id/RPW"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PWEnter"
+        android:visibility="invisible"
+        android:fontFamily="@font/museosans_300"
+        android:layout_marginHorizontal="10pt"
+        app:drawableStartCompat="@drawable/cross"
+        />
+
+    <TextView
+        android:id="@+id/RPW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/RPW"
+        app:layout_constraintBottom_toTopOf="@+id/RPWEnter"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PWEnter"
+        app:layout_constraintHorizontal_bias="0"
+        android:fontFamily="@font/museosans_300"
+        android:layout_marginHorizontal="10pt"/>
+
+    <EditText
+        android:id="@+id/RPWEnter"
+        android:autofillHints="password"
+        android:hint="@string/RPW"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/RPWError"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RPW"
+        android:layout_marginHorizontal="10pt"
+        android:singleLine="true"
+        />
+
+    <ImageView
+        android:id="@+id/RPWClear"
+        android:contentDescription="@string/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/RPWEnter"
+        app:layout_constraintLeft_toLeftOf="@+id/RPWEnter"
+        app:layout_constraintRight_toRightOf="@+id/RPWEnter"
+        app:layout_constraintTop_toTopOf="@+id/RPWEnter"
+        app:layout_constraintHorizontal_bias="1"
+        android:visibility="invisible"
+        android:src="@drawable/tick"
+        />
+
+    <ImageView
+        android:id="@+id/RPWWrong"
+        android:contentDescription="@string/cross"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/RPWEnter"
+        app:layout_constraintLeft_toLeftOf="@+id/RPWEnter"
+        app:layout_constraintRight_toRightOf="@+id/RPWEnter"
+        app:layout_constraintTop_toTopOf="@+id/RPWEnter"
+        app:layout_constraintHorizontal_bias="1"
+        android:visibility="invisible"
+        android:src="@drawable/cross"
+        />
+
+    <TextView
+        android:id="@+id/RPWError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/secondPassError"
+        app:layout_constraintBottom_toTopOf="@+id/instructions"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RPWEnter"
+        android:visibility="invisible"
+        android:fontFamily="@font/museosans_300"
+        android:layout_marginHorizontal="10pt"
+        app:drawableStartCompat="@drawable/cross"
+         />
+
+    <TextView
+        android:id="@+id/instructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/instructions"
+        app:layout_constraintBottom_toTopOf="@id/buttonBackground"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RPWEnter"
+        android:fontFamily="@font/museosans_300"
+        android:layout_marginHorizontal="10pt"
+        />
+
+    <ImageView
+        android:id="@+id/buttonBackground"
+        android:contentDescription="@string/background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gradient_button_background"
+        android:layout_margin="10pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instructions"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonBackground"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonBackground"
+        android:fontFamily="@font/museosans_300"
+        />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonBackground"
+        app:layout_constraintLeft_toLeftOf="@+id/buttonBackground"
+        app:layout_constraintRight_toRightOf="@+id/buttonBackground"
+        app:layout_constraintTop_toTopOf="@+id/buttonBackground"
+        android:enabled="false"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
