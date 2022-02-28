@@ -19,4 +19,5 @@
     <string name="create">Create an Account</string>
     <string name="backarrowdescript">A back arrow</string>
     <string name="cross">A red X</string>
+    <string name="PWHint">See Criteria Below</string>
 </resources>
