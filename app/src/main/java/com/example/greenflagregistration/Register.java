@@ -27,7 +27,12 @@ public class Register extends AppCompatActivity {
     Button next;
     ImageButton back;
     ImageView emailClear, PWClear, RPWClear, emailWrong, PWWrong, RPWWrong;
-    boolean validEmail, validPW, validRPW;
+    boolean validEmail= false, validPW = false, validRPW = false;
+
+    SharedPreferences saved;
+    SharedPreferences.Editor editor;
+
+    private static final String sharedPrefsName = "GreenFlagRegistrationSP";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +53,27 @@ public class Register extends AppCompatActivity {
         emailWrong=findViewById(R.id.emailWrong);
         PWWrong=findViewById(R.id.PWWrong);
         RPWWrong=findViewById(R.id.RPWWrong);
-        validEmail=false;
-        validPW=false;
-        validRPW=false;
 
+        // As best practice always keep the constant names in static variables so you can access them any time you need
+        // no hardcoded values
+        saved = getApplicationContext().getSharedPreferences(sharedPrefsName, Context.MODE_PRIVATE);
+        editor = saved.edit();
+    }
+
+    /**
+     * Always use all the logic of your app inside the onResume
+     * onCreate will be used for assigning your views to variables
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        String emailSaved = saved.getString("email", null);
+
+        // This logic will make the functionality to display the email stored
+        if (emailSaved!= null) {
+            email.setText(emailSaved);
+        }
 
         email.addTextChangedListener(new TextWatcher() {
             @Override
@@ -94,18 +116,18 @@ public class Register extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String pass=PW.getText().toString();
-                    if (pass.length()>8 && pass.matches("^.*[^a-zA-Z ].*$") && !pass.toUpperCase().equals(pass) && !pass.toLowerCase().equals(pass)){
-                        PWError.setVisibility(View.INVISIBLE);
-                        PWClear.setVisibility(View.VISIBLE);
-                        PWWrong.setVisibility(View.INVISIBLE);
-                        validPW=true;
-                    }
-                    else{
-                        PWError.setVisibility((View.VISIBLE));
-                        PWClear.setVisibility(View.INVISIBLE);
-                        PWWrong.setVisibility(View.VISIBLE);
-                        validPW=false;
-                    }
+                if (pass.length()>8 && pass.matches("^.*[^a-zA-Z ].*$") && !pass.toUpperCase().equals(pass) && !pass.toLowerCase().equals(pass)){
+                    PWError.setVisibility(View.INVISIBLE);
+                    PWClear.setVisibility(View.VISIBLE);
+                    PWWrong.setVisibility(View.INVISIBLE);
+                    validPW=true;
+                }
+                else{
+                    PWError.setVisibility((View.VISIBLE));
+                    PWClear.setVisibility(View.INVISIBLE);
+                    PWWrong.setVisibility(View.VISIBLE);
+                    validPW=false;
+                }
                 next.setEnabled(validEmail && validPW && validRPW);
             }
 
@@ -145,9 +167,10 @@ public class Register extends AppCompatActivity {
         });
 
         next.setOnClickListener(view -> {
-            SharedPreferences saved = getApplicationContext().getSharedPreferences("GreenFlagRegistrationSP", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = saved.edit();
             if (saved.getString(email.getText().toString(),null)==null) {
+                // here I am saving my email to be displayed if I already have an account
+                editor.putString("email", email.getText().toString());
+
                 editor.putString(email.getText().toString(),PW.getText().toString());
                 editor.apply();
                 Toast.makeText(getApplicationContext(), "Registered", Toast.LENGTH_LONG).show();
@@ -155,7 +178,7 @@ public class Register extends AppCompatActivity {
             }
             else{
                 Toast.makeText(getApplicationContext(), "Email Already in Use", Toast.LENGTH_LONG).show();
-               }
+            }
         });
 
         back.setOnClickListener(view -> finish());
